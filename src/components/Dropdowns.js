@@ -66,12 +66,12 @@ const Dropdowns = () => {
                 <Container>
                     <Wrapper>
                         <h3>States : </h3>
-                        <select value={currentState} onChange={handleClick} id="states">
+                        <select value={currentState} onChange={handleClick} id="state">
                             {
                                 States.map((obj, id) => {
                                     const name = obj.name;
                                     return (
-                                        <option key={id} value={name}>{name}</option>
+                                        <option key={id} value={id}>{name}</option>
                                     )
                                 })
                             }
@@ -80,12 +80,12 @@ const Dropdowns = () => {
                     </Wrapper>
                     <Wrapper>
                         <h3>Cities : </h3>
-                        <select onChange={handleCityChange} value={currentCity} id="cities">
+                        <select onChange={handleCityChange} value={currentCity} id="city">
                             {
                                 cities.map((obj, id) => {
                                     const name = obj.name;
                                     return (
-                                        <option key={id} value={name}>{name}</option>
+                                        <option key={id} value={id}>{name}</option>
                                     )
                                 })
                             }
@@ -94,12 +94,12 @@ const Dropdowns = () => {
                     </Wrapper>
                     <Wrapper>
                         <h3>Towns : </h3>
-                        <select onChange={handleTownChange} value={currentTown} id="towns">
+                        <select onChange={handleTownChange} value={currentTown} id="landmark">
                             {
                                 towns.map((obj, id) => {
                                     const name = obj.name;
                                     return (
-                                        <option key={id} value={name}>{name}</option>
+                                        <option key={id} value={id}>{name}</option>
                                     )
 
                                 })
