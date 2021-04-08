@@ -221,119 +221,63 @@ const states = [
 ];
 
 function App() {
-	const [selectedState, setSelectedState] = useState(0);
-	const [selectedCity, setSelectedCity] = useState(0);
-	const [selectedLandmark, setSelectedLandmark] = useState(0);
-
-
+	// Do not alter/remove main div
+	const [key, setKey] = useState(0);
+	const [keycity, setCityKey] = useState(key);
+	const [keytown, setTownKey] = useState(keycity);
 	const handleStateChange = (event) => {
-		setSelectedState(event.target.value);
-		setSelectedCity(0)
-		setSelectedLandmark(0)
+		setKey(event.target.value);
 	};
-
 	const handleCityChange = (event) => {
-		setSelectedCity(event.target.value);
-		setSelectedLandmark(0)
+		setCityKey(event.target.value);
 	};
-
-	const handleLandmarkChange = (event) => {
-		setSelectedLandmark(event.target.value);
+	const handleTownChange = (event) => {
+		setTownKey(event.target.value);
 	};
-	const divStyle={
-		display:'flex',
-		justifyContent:'space-around'
-	}
-	const selectStyle = {
-		
-		width:'40vw'
-	}
 	return (
-		<>
-			<div id="main" style={divStyle} >
-				<div style={selectStyle} id="select">
-					<span>States: </span>
-					<select id="state" value={selectedState} onChange={handleStateChange}>
-						{states.map((item, itemIndex) => {
-							return (
-								<option key={itemIndex} value={itemIndex}>
-									{item.name}
-								</option>
-							);
-						})}
-					</select>
-					<br></br>
-					<br></br>
-					<br></br>
-					<span>Cities: </span>
-					<select id="city" value={selectedCity} onChange={handleCityChange}>
-						{states[selectedState].city.map((item, itemIndex) => {
-							return (
-								<option key={itemIndex} value={itemIndex}>
-									{item.name}
-								</option>
-							);
-						})}
-					</select>
-					<br></br>
-					<br></br>
-					<br></br>
-					<span>Landmark: </span>
-					<select
-						id="landmark"
-						value={selectedLandmark}
-						onChange={handleLandmarkChange}
-					>
-						{states[selectedState].city[selectedCity].landmarks.map(
-							(item, itemIndex) => {
-								return (
-									<option key={itemIndex} value={itemIndex}>
-										{item.name}
-									</option>
-								);
-							}
-						)}
-					</select>
-				</div>
-				<div id="data">
-					<div id="state-name">
-						
-						<div id="state-title">{states[selectedState].name}</div>
-						<div id="state-description">
-							{states[selectedState].description}
-						</div>
-					</div>
-					<div id="city-name">
-						
-						<div id="city-title">
-							{states[selectedState].city[selectedCity].name}
-						</div>
-						<div id="city-description">
-							{states[selectedState].city[selectedCity].description}
-						</div>
-					</div>
-					<div id="landmark-name">
-						
-						<div id="landmark-title">
-							{
-								states[selectedState].city[selectedCity].landmarks[
-									selectedLandmark
-								].name
-							}
-						</div>
-						<div id="landmark-description">
-							{
-								states[selectedState].city[selectedCity].landmarks[
-									selectedLandmark
-								].description
-							}
-						</div>
-					</div>
-				</div>
+		<div id="main">
+			States:
+			<select value={key} id="state" onChange={handleStateChange}>
+				{states.map((item, key) => (
+					<option value={key} key={key}>
+						{item.name}
+					</option>
+				))}
+			</select>
+			<div id="state-title">{states[key].name}</div>
+			<div id="state-description">{states[key].description}</div>
+			{/* <h1>{keycity}</h1> */}
+      Cities:
+			<select id="city" value={keycity} onChange={handleCityChange}>
+				{states[key].city.map((item, key) => (
+					<option value={key} key={key}>
+						{item.name}
+					</option>
+				))}
+			</select>
+			<div id="city-title">{states[key].city[keycity].name}</div>
+			<div id="city-description">{states[key].city[keycity].description}</div>
+			{/* <h1>{keytown}</h1> */}
+      Towns:
+			<select value={keytown} id="landmark" onChange={handleTownChange}>
+				{states[key].city[keycity].landmarks.map((item, key) => (
+					<option value={key} key={key}>
+						{item.name}
+					</option>
+				))}
+			</select>
+			<div id="landmark-title">
+				{states[key].city[keycity].landmarks[keytown].name}
 			</div>
-		</>
+			<div id="landmark-description">
+				{states[key].city[keycity].landmarks[keytown].description}
+			</div>
+		</div>
 	);
 }
+
+
+export default App;
 export default App;
 
 
