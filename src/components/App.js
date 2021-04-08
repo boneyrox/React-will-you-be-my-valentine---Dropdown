@@ -228,10 +228,13 @@ function App() {
 
 	const handleStateChange = (event) => {
 		setSelectedState(event.target.value);
+		setSelectedCity(0)
+		setSelectedLandmark(0)
 	};
 
 	const handleCityChange = (event) => {
 		setSelectedCity(event.target.value);
+		setSelectedLandmark(0)
 	};
 
 	const handleLandmarkChange = (event) => {
