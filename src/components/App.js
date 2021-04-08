@@ -1,4 +1,4 @@
-import React, { useState,useReducer } from "react";
+import React, { useState, useReducer } from "react";
 import "./../styles/App.css";
 
 
@@ -225,6 +225,7 @@ function App() {
 	const [selectedCity, setSelectedCity] = useState(0);
 	const [selectedLandmark, setSelectedLandmark] = useState(0);
 
+
 	const handleStateChange = (event) => {
 		setSelectedState(event.target.value);
 	};
@@ -236,11 +237,18 @@ function App() {
 	const handleLandmarkChange = (event) => {
 		setSelectedLandmark(event.target.value);
 	};
-
+	const divStyle={
+		display:'flex',
+		justifyContent:'space-around'
+	}
+	const selectStyle = {
+		
+		width:'40vw'
+	}
 	return (
 		<>
-			<div id="main">
-				<div id="select">
+			<div id="main" style={divStyle} >
+				<div style={selectStyle} id="select">
 					<span>States: </span>
 					<select id="state" value={selectedState} onChange={handleStateChange}>
 						{states.map((item, itemIndex) => {
@@ -285,17 +293,15 @@ function App() {
 					</select>
 				</div>
 				<div id="data">
-					<div>
-						<div id="state-name">{states[selectedState].name}</div>
+					<div id="state-name">
+						
 						<div id="state-title">{states[selectedState].name}</div>
 						<div id="state-description">
 							{states[selectedState].description}
 						</div>
 					</div>
-					<div>
-						<div id="city-name">
-							{states[selectedState].city[selectedCity].name}
-						</div>
+					<div id="city-name">
+						
 						<div id="city-title">
 							{states[selectedState].city[selectedCity].name}
 						</div>
@@ -303,14 +309,8 @@ function App() {
 							{states[selectedState].city[selectedCity].description}
 						</div>
 					</div>
-					<div>
-						<div id="landmark-name">
-							{
-								states[selectedState].city[selectedCity].landmarks[
-									selectedLandmark
-								].name
-							}
-						</div>
+					<div id="landmark-name">
+						
 						<div id="landmark-title">
 							{
 								states[selectedState].city[selectedCity].landmarks[
@@ -332,3 +332,6 @@ function App() {
 	);
 }
 export default App;
+
+
+
